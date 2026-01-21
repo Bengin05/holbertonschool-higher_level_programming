@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 def square_matrix_simple(matrix=[]):
-
     new_matrix = []
 
     for row in matrix:
@@ -8,6 +7,6 @@ def square_matrix_simple(matrix=[]):
         for number in row:
             square = number * number
             new_row.append(square)
-        new_matrix.(new_row)
+        new_matrix.append(new_row)
 
     return new_matrix
