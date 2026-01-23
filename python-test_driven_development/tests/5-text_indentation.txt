@@ -1,0 +1,82 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hello. World?")
+Hello.
+<BLANKLINE>
+World?
+<BLANKLINE>
+
+>>> text_indentation("Hello:   World")
+Hello:
+<BLANKLINE>
+World
+
+>>> text_indentation("No punctuation")
+No punctuation
+
+>>> text_indentation("A.B?C:D")
+A.
+<BLANKLINE>
+B?
+<BLANKLINE>
+C:
+<BLANKLINE>
+D
+
+# Leading spaces must not appear at the beginning of a printed line
+>>> text_indentation("   Hello.")
+Hello.
+<BLANKLINE>
+
+# Spaces after separators must be removed at start of next line
+>>> text_indentation("Hi.   There")
+Hi.
+<BLANKLINE>
+There
+
+# Trailing spaces must not appear at the end of the last printed line
+>>> text_indentation("End.   ")
+End.
+<BLANKLINE>
+
+# Multiple separators and spacing
+>>> text_indentation("One..?  Two::   Three")
+One.
+<BLANKLINE>
+.
+<BLANKLINE>
+?
+<BLANKLINE>
+Two:
+<BLANKLINE>
+:
+<BLANKLINE>
+Three
+
+# Empty and spaces-only strings
+>>> text_indentation("")
+>>> text_indentation("   ")
+
+# Type errors: text must be a string
+>>> text_indentation(123)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation(None)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation(['Hello.'])
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+# Wrong number of arguments (Python handles these)
+>>> text_indentation()  # doctest: +ELLIPSIS
+Traceback (most recent call last):
+...
+TypeError: ...
+>>> text_indentation("Hello", "World")  # doctest: +ELLIPSIS
+Traceback (most recent call last):
+...
+TypeError: ...
