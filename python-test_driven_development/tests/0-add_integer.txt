@@ -1,0 +1,58 @@
+>>> add_integer = __import__('0-add_integer').add_integer
+
+# Integer cases
+>>> add_integer(1, 2)
+3
+>>> add_integer(100, -2)
+98
+>>> add_integer(2)
+100
+>>> add_integer(0, 0)
+0
+
+# Float cases (a float, b int)
+>>> add_integer(100.3, -2)
+98
+>>> add_integer(-3.9, 1)
+-2
+
+# Float cases (int + float / float + float)
+>>> add_integer(5, 2.9)
+7
+>>> add_integer(3.7, 4.2)
+7
+
+# Large numbers
+>>> add_integer(1000000000, 2000000000)
+3000000000
+
+# Boolean values (bool is a subclass of int)
+>>> add_integer(True, False)
+1
+
+# Type errors - wrong type for a
+>>> add_integer("1", 2)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(None, 2)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer([1, 2], 3)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+# Type errors - wrong type for b
+>>> add_integer(1, "2")
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+>>> add_integer(2, None)
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
