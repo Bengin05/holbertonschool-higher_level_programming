@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""Define a Student class that can serialize to and reload from a dict."""
+
+
 class Student:
     """Module defining a Student class with JSON serialization support."""
 
