@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""Define a Student class with optional JSON-ready serialization."""
+
+
 class Student:
     """Represent a student with basic identifying information."""
 
