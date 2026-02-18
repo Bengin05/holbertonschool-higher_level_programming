@@ -1,23 +1,21 @@
 #!/usr/bin/python3
-"""Develop a Simple API using Python with Flask
-This modules creates a API with various endpoint for user management.
-"""
+"""Simple Flask API for managing users in memory."""
 
-from flask import Flask, jsonify, requests
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-user = {}
+users = {}
 
 
 @app.get("/")
 def home():
     """Return a welcome message."""
-    return "Welcome to the Flask API"
+    return "Welcome to the Flask API!"
 
 
 @app.get("/data")
-def data()
+def data():
     """Return a JSON list of all usernames."""
     return jsonify(list(users.keys()))
 
@@ -36,21 +34,21 @@ def user_check(username):
     return jsonify(users[username])
 
 
-@app.get("/add_user")
-def add_user:
+@app.post("/add_user")
+def add_user():
     """Add a user from JSON body with validation and return 201."""
     data = request.get_json(silent=True)
 
     if data is None:
         return jsonify({"error": "Invalid JSON"}), 400
-    
+
     username = data.get("username")
     if not username:
         return jsonify({"error": "Username is required"}), 400
-    
+
     if username in users:
         return jsonify({"error": "Username already exists"}), 409
-    
+
     user_obj = {
         "username": username,
         "name": data.get("name"),
@@ -62,6 +60,5 @@ def add_user:
     return jsonify({"message": "User added", "user": user_obj}), 201
 
 
-if __name__== "__main__":
+if __name__ == "__main__":
     app.run()
-    
