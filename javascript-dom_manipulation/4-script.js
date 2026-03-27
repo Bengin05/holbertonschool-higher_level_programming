@@ -1,10 +1,8 @@
-const addItem = document.getElementById('add_item');
-const myList = document.querySelector('ul.myList');
+const addItem = document.querySelector('#add_item');
+const list = document.querySelector('.my_list');
 
-function addListItem() {
-    const li = document.createElement('li');
-    li.texteContent = 'Item';
-    myList.appendChild(li);
-}
-
-addItem.addEventListener('click', addListItem);
+addItem.addEventListener('click', function () {
+  const newItem = document.createElement('li');
+  newItem.textContent = 'Item';
+  list.append(newItem);
+});
